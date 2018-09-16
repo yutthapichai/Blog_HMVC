@@ -1,6 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/* register folder libraries */
+define('EXT', '.php');
+spl_autoload_register(function($class){
+  $file = APPPATH . 'libraries/'. $class . EXT;
+  if(strpos($class, 'CI_') !== 0)
+  {
+    if(file_exists($file)  && is_file($file))
+    {
+      @include_once (APPPATH . 'libraries/' . $class . EXT);
+    }
+  }
+});
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
