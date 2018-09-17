@@ -53,8 +53,21 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	//define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	switch(dirname(__FILE__))
+	{
+		case 'http://localhost/CI_study':
+			define('ENVIRONMENT', 'development');
+			break;
 
+		case '/domain/enterdomain.co/testing':
+			define('ENVIRONMENT', 'testing');
+			break;
+
+		default:
+			define('ENVIRONMENT', 'production');
+			break;
+	}
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
