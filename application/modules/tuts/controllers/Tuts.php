@@ -11,6 +11,9 @@ class Tuts extends MX_Controller
   public function index()
   {
     //echo 'Hello world from HMVC';
-    $this->load->view('Home_V');
+    //$this->load->view('Home');
+    $data['module'] = 'tuts';
+    $data['view_file'] = 'home';
+    echo Modules::run('templates/three_col', $data);
   }
 }
