@@ -79,13 +79,13 @@ switch (ENVIRONMENT) {
 		$active_group = 'testing';
 		break;
 	default:
-		$active_group = 'production';
+		$active_group = 'development';
 		break;
 }
 
 $query_builder = TRUE;
 
-$db['production'] = array(
+$db['development'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => '',

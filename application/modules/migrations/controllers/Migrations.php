@@ -10,6 +10,7 @@ class Migrations extends MX_Controller
 
   public function index()
   {
-    
+    $this->load->library('migration');
+    echo $this->migration->current() === FALSE ? show_error($this->migration->error_string()) : 'Migration successfully';
   }
 }
