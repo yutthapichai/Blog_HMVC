@@ -105,7 +105,7 @@ class MY_Model extends CI_Model
     if($id == FALSE)
     {
       // insert data
-      $this->Db->set($data)->insert($this->table_name);
+      $this->db->set($data)->insert($this->table_name);
     }else
     {
       // update the data
@@ -114,7 +114,7 @@ class MY_Model extends CI_Model
     }
 
     //return id
-    $id == FALSE ? $this->db->insert_id() : $id;
+    return $id == FALSE ? $this->db->insert_id() : $id;
   }
 
   public function delete($ids)
