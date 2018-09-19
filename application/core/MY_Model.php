@@ -45,7 +45,7 @@ class MY_Model extends CI_Model
       $this->db->order_by($this->order_by);
     }
     //return results
-    $single = FALSE || $this->db->limit(1);
+    $single == FALSE || $this->db->limit(1);
     $method = $single ? 'row_array' : 'result_array';
     return $this->db->get($this->table_name)->$method();
   }

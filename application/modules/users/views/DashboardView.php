@@ -4,7 +4,7 @@
       <h2>Latest Postss</h2>
     </div>
     <div class="col-sm-4">
-      <h3>Sidebar</h3>
+      <?php echo Modules::run('categories/categories/get_cat_sidebar'); ?>
     </div>
   </div>
 </div>

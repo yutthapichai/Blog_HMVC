@@ -59,6 +59,8 @@ $route['edit_profile_pic']   = 'users/dashboard/edit_profile_pic';
 $route['update_profile_pic'] = 'users/dashboard/update_profile_pic';
 $route['edit_profile']       = 'users/dashboard/edit_profile';
 $route['update_profile']     = 'users/dashboard/update_profile';
+//Blog
+$route['add_post']           = 'posts/blog/add_post';
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
