@@ -1,18 +1,3 @@
-<?php
-if($this->session->flashdata('Addpost'))
-{
-?>
-  <div class="container mt-5">
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>Notification!</strong> <?php echo $this->session->flashdata('Addpost');?>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  </div>
-<?php
-}
-?>
 <div class="container">
   <div class="col-sm-12 col-lg-8">
     <div class="bg-grey add-post my-3">

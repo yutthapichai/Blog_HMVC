@@ -61,6 +61,8 @@ $route['edit_profile']       = 'users/dashboard/edit_profile';
 $route['update_profile']     = 'users/dashboard/update_profile';
 //Blog
 $route['add_post']           = 'posts/blog/add_post';
+$route['my_post']            = 'posts/blog/my_post';
+$route['view_post/(:any)']   = 'posts/blog/view_post/$1';
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';

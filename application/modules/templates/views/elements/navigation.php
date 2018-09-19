@@ -39,7 +39,7 @@
               Setting
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <?= anchor('mypost', 'My Post', array('class' => 'dropdown-item')); ?>
+              <?= anchor('my_post', 'My Post', array('class' => 'dropdown-item')); ?>
               <?= anchor('profile', 'Profile', array('class' => 'dropdown-item')); ?>
               <?= anchor('dashboard', 'Dashboard', array('class' => 'dropdown-item')); ?>
               <div class="dropdown-divider"></div>

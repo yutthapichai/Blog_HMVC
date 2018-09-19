@@ -14,6 +14,7 @@ class Blog extends MX_Controller
     $this->output->set_header('Pragma: no-cache');
 
     $this->load->model('PostsModel');
+    $this->load->helper('text');
   }
 
   public function add_post()
@@ -40,17 +41,47 @@ class Blog extends MX_Controller
           'title' => $title,
           'body' => $body,
           'category_id' => $category_id,
-          'poster_id' => $poster_id,
+          'poster_id' => $this->session->userdata('user_id')
         );
         $data['insert'] = $this->PostsModel->save($postData);
         if(!empty($data['insert']))
         {
           $this->session->set_flashdata('Addpost', 'You have add post successfully');
-          redirect('add_post');
+          redirect('my_post');
         }else{
           echo "cannot add post";
         }
       }
+    }
+  }
+
+  public function my_post()
+  {
+    if($this->session->userdata('is_logged_in') == FALSE)
+    {
+      redirect('login');
+    }else {
+      $poster_id = $this->session->userdata('user_id');
+      $data['posts'] = $this->PostsModel->get_my_post($poster_id);
+      $data['title'] = 'My Post | '. $this->session->userdata('firstname');
+      $data['module'] = 'posts';
+      $data['view_file'] = 'my_post_view';
+      echo Modules::run('templates/default_layout',$data);
+    }
+  }
+
+  public function view_post()
+  {
+    $post_id = $this->uri->segment(2);
+    if(empty($post_id))
+    {
+      show_404();
+    }else {
+      $data['view_posts'] = $this->PostsModel->get_view_post($post_id);
+      $data['title'] = 'My Post | '. $this->session->userdata('firstname');
+      $data['module'] = 'posts';
+      $data['view_file'] = 'view_post_view';
+      echo Modules::run('templates/default_layout',$data);
     }
   }
 }
