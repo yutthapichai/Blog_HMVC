@@ -59,6 +59,7 @@
     );
 
     echo form_open('register', array('class' => 'form-forizontal mt-4'));
+    
     echo form_input($firstname);
     echo '<div class="error">'.form_error('firstname').'</div>';
     echo form_input($lastname);

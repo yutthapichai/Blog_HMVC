@@ -15,7 +15,7 @@ if($this->session->flashdata('UserRegistered'))
 ?>
 
 <div class="container">
-    <div class="col-8 center-block mt-5 login-page bg-grey">
+    <div class="col-sm-12 col-md-12 col-lg-8 center-block mt-5 login-page bg-grey">
       <h2>Login here...!</h2>
       <?php
       $email = array(
