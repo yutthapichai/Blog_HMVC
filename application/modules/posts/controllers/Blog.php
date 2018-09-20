@@ -138,4 +138,19 @@ class Blog extends MX_Controller
     echo Modules::run('templates/default_layout',$data);
 
   }
+
+  public function latest_posts()
+  {
+    $data['posts'] = $this->PostsModel->get_latest_post();
+    $data['title'] = 'Last Post';
+    $data['module'] = 'posts';
+    $data['view_file'] = 'latest_post_view';
+    echo Modules::run('templates/default_layout',$data);
+  }
+
+  public function dash_posts()
+  {
+    $data['posts'] = $this->PostsModel->get_latest_post();
+    $this->load->view('dash_posts_view', $data);
+  }
 }

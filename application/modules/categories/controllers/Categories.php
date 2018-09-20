@@ -14,6 +14,7 @@ class Categories extends MX_Controller
     $this->output->set_header('Pragma: no-cache');
 
     $this->load->model('CategoryModel');
+    $this->load->helper('text');
   }
 
   public function get_cat_for_form()
@@ -26,5 +27,22 @@ class Categories extends MX_Controller
   {
     $data['categories'] = $this->CategoryModel->find();
     $this->load->view('cate_sidebar_view',$data);
+  }
+
+  public function view_category_post()
+  {
+    $cat_id = $this->uri->segment(2);
+
+    if(empty($cat_id))
+    {
+      show_404();
+    }else {
+      $data['posts'] = $this->CategoryModel->get_cat_post($cat_id);
+      $data['title'] = 'Posts by category';
+      $data['module'] = 'categories';
+      $data['view_file'] = 'view_cat_view';
+      echo Modules::run('templates/default_layout',$data);
+    }
+
   }
 }

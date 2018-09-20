@@ -42,4 +42,20 @@ class PostsModel extends MY_Model
     // 1 row
     return $query->row_array();
   }
+
+  public function get_latest_post()
+  {
+    $query = $this->db->select('posts.id as post_id, posts.poster_id, posts.title,
+    posts.body, categories.category_name, users.firstname, users.lastname,
+    COUNT(comments.id) as total_comments', false)
+    ->from('posts')
+    ->join('categories', 'categories.id = posts.category_id')
+    ->join('users', 'users.id = posts.poster_id')
+    ->join('comments', 'comments.post_id = posts.id', 'left')
+    ->group_by('posts.id')
+    ->order_by('posts.id', 'DESC')
+    ->get();
+
+    return $query->result_array();
+  }
 }

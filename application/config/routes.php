@@ -62,12 +62,15 @@ $route['update_profile']     = 'users/dashboard/update_profile';
 
 $route['view_author_profile/(:any)']= 'users/public_access/view_author_profile/$1';
 $route['view_authors_posts/(:any)']= 'posts/blog/view_authors_posts/$1';
+$route['view_category_post/(:any)']= 'categories/categories/view_category_post/$1';
 //Blog
 $route['add_post']           = 'posts/blog/add_post';
 $route['my_post']            = 'posts/blog/my_post';
 $route['view_post/(:any)']   = 'posts/blog/view_post/$1';
 $route['save_comment']       = 'posts/blog/save_comment';
+$route['latest_posts']       = 'posts/blog/latest_posts';
 
-$route['default_controller'] = 'welcome';
+
+$route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

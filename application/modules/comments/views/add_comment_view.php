@@ -12,7 +12,7 @@ if($this->session->userdata('is_logged_in') == FALSE)
   </div>
 </div>
 <?php
-}
+}else{
  ?>
     <div class="add-post bg-grey mt-3">
       <h5>Add Comment</h5>
@@ -47,3 +47,5 @@ if($this->session->userdata('is_logged_in') == FALSE)
       echo form_close();
        ?>
     </div>
+    <?php
+}

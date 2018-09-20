@@ -28,11 +28,12 @@
         </div>
       </div>
       <?php
-    }else if($this->session->flashdata('CommentAdded')){
+    }
+    if($this->session->flashdata('CommentAdded')){
       ?>
       <div class="mt-3">
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Notification!</strong>
+            <strong>Notifications</strong>
             <?php echo $this->session->flashdata('CommentAdded'); ?>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -41,7 +42,7 @@
         </div>
     <?php
     }
-      echo Modules::run('comments/postcomments/add_comments'); 
+      echo Modules::run('comments/postcomments/add_comments');
       echo Modules::run('comments/postcomments/get_comments', $view_posts['post_id']);
       ?>
     </div>
