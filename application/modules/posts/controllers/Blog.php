@@ -69,19 +69,4 @@ class Blog extends MX_Controller
       echo Modules::run('templates/default_layout',$data);
     }
   }
-
-  public function view_post()
-  {
-    $post_id = $this->uri->segment(2);
-    if(empty($post_id))
-    {
-      show_404();
-    }else {
-      $data['view_posts'] = $this->PostsModel->get_view_post($post_id);
-      $data['title'] = 'My Post | '. $this->session->userdata('firstname');
-      $data['module'] = 'posts';
-      $data['view_file'] = 'view_post_view';
-      echo Modules::run('templates/default_layout',$data);
-    }
-  }
 }
