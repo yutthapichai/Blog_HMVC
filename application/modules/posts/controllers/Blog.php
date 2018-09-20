@@ -69,4 +69,50 @@ class Blog extends MX_Controller
       echo Modules::run('templates/default_layout',$data);
     }
   }
+
+  public function view_post()
+  {
+    $post_id = $this->uri->segment(2);
+    if(empty($post_id))
+    {
+      show_404();
+    }else {
+      $data['view_posts'] = $this->PostsModel->get_view_post($post_id);
+      $data['title'] = 'My Post | '. $this->session->userdata('firstname');
+      $data['module'] = 'posts';
+      $data['view_file'] = 'view_post_view';
+      echo Modules::run('templates/default_layout',$data);
+    }
+  }
+
+  public function save_comment()
+  {
+    $this->form_validation->set_rules('comment_body', 'comment Body' , 'trim|required|min_length[20]|max_length[500]');
+    if($this->form_validation->run() === FALSE)
+    {
+      $post_id = $this->input->post('post_id');
+      $this->session->set_flashdata('CommentValidation', validation_errors());
+      redirect('view_post/'.$post_id);
+    }else {
+      $post_id = $this->input->post('post_id');
+      $comment_data = array(
+        'post_id' => $post_id,
+        'commenter_id' => $this->session->userdata('user_id'),
+        'comment_body' => $this->input->post('comment_body')
+      );
+
+      $message = Modules::run('comments/postcomments/save_comment', $comment_data);
+
+      if(!empty($message))
+      {
+        $this->session->set_flashdata('CommentAdded', 'Comment Added successfully');
+        redirect('view_post/'.$post_id);
+      }
+      else
+      {
+        echo "cannot save a comment";
+      }
+
+    }
+  }
 }

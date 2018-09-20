@@ -65,6 +65,7 @@ $route['view_author_profile/(:any)']= 'users/public_access/view_author_profile/$
 $route['add_post']           = 'posts/blog/add_post';
 $route['my_post']            = 'posts/blog/my_post';
 $route['view_post/(:any)']   = 'posts/blog/view_post/$1';
+$route['save_comment']       = 'posts/blog/save_comment';
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';

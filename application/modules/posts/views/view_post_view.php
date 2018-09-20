@@ -12,9 +12,38 @@
         <!-- have to load herper('text') will show content-->
         <p><?= word_limiter($view_posts['body']); ?></p>
       </div>
+
+      <?php
+      if($this->session->flashdata('CommentValidation'))
+      {
+      ?>
+      <div class="mt-3">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Notification!</strong>
+          <?php echo $this->session->flashdata('CommentValidation'); ?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      <?php
+    }else if($this->session->flashdata('CommentAdded')){
+      ?>
+      <div class="mt-3">
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Notification!</strong>
+            <?php echo $this->session->flashdata('CommentAdded'); ?>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+    <?php
+    }
+
+      echo Modules::run('comments/postcomments/add_comments'); ?>
     </div>
     <div class="col-sm-12 col-lg-4">
-
     </div>
   </div>
 </div>
