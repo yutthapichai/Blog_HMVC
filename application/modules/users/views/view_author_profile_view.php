@@ -21,6 +21,9 @@
           <strong>About</strong>
           <?= $user_profile['about'];?>
         </p>
+        <p>
+        <?= anchor('view_authors_posts/'.$user_profile['id'],'View '.$user_profile['firstname']."'".'s Posts', array('class' => 'btn btn-danger'));?>
+        </p>
       </div>
     </div>
   </div>

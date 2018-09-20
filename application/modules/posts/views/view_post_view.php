@@ -8,6 +8,7 @@
           $view_posts['firstname'].'&nbsp'.$view_posts['lastname']); ?></small>
 
           <small><?= ucfirst($view_posts['category_name']);?></small>
+
         </div>
         <!-- have to load herper('text') will show content-->
         <p><?= word_limiter($view_posts['body']); ?></p>
@@ -40,8 +41,9 @@
         </div>
     <?php
     }
-
-      echo Modules::run('comments/postcomments/add_comments'); ?>
+      echo Modules::run('comments/postcomments/add_comments'); 
+      echo Modules::run('comments/postcomments/get_comments', $view_posts['post_id']);
+      ?>
     </div>
     <div class="col-sm-12 col-lg-4">
     </div>

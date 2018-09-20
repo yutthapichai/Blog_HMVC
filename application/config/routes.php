@@ -61,6 +61,7 @@ $route['edit_profile']       = 'users/dashboard/edit_profile';
 $route['update_profile']     = 'users/dashboard/update_profile';
 
 $route['view_author_profile/(:any)']= 'users/public_access/view_author_profile/$1';
+$route['view_authors_posts/(:any)']= 'posts/blog/view_authors_posts/$1';
 //Blog
 $route['add_post']           = 'posts/blog/add_post';
 $route['my_post']            = 'posts/blog/my_post';

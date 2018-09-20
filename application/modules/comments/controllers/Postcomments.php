@@ -26,4 +26,10 @@ class Postcomments extends MX_Controller
     $data['comment'] = $this->CommentModel->save($comment_data);
     echo $data['comment'];
   }
+
+  public function get_comments($post_id)
+  {
+    $data['comments'] = $this->CommentModel->get_comments($post_id);
+    $this->load->view('get_comments_view', $data);
+  }
 }

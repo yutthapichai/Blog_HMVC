@@ -1,32 +1,22 @@
 <?php
-if($this->session->flashdata('Addpost'))
+if(isset($error))
 {
-?>
-  <div class="container mt-3">
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>Notification!</strong> <?php echo $this->session->flashdata('Addpost');?>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  </div>
-<?php
-}
-?>
-
-<div class="container mb-3">
+  echo '<h3>'.$error.'</h3>';
+}else{
+ ?>
+<div class="container mb-5">
   <div class="row">
     <div class="col-sm-12 col-lg-8">
       <div class="post-page">
         <?php
         if(empty($posts))
         {
-          echo "<h3>You have not made any posts yet..!</h3>";
+          echo "<h3 class='mt-3'>You have not made any posts yet..!</h3>";
         }else {
           foreach($posts as $value)
           {
             ?>
-            <div class="post-holder bg-grey mt-3">
+            <div class="post-holder bg-grey mt-5">
               <h3><?= $value['title'] ?></h3>
               <div class="post_details">
                 <small><?= anchor('view_author_profile/'.$value['poster_id'],
@@ -49,3 +39,6 @@ if($this->session->flashdata('Addpost'))
     </div>
   </div>
 </div>
+<?php
+}
+ ?>

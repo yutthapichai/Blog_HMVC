@@ -30,4 +30,13 @@ class Public_access extends MX_Controller
       echo Modules::run('templates/default_layout',$data);
     }
   }
+
+  public function author_check($id)
+  {
+    $data['user_profile'] = $this->UserModel->find($id);
+    if(empty($data['user_profile']))
+    {
+      echo 'error';
+    }
+  }
 }

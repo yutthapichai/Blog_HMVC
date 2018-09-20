@@ -112,7 +112,30 @@ class Blog extends MX_Controller
       {
         echo "cannot save a comment";
       }
-
     }
+  }
+
+  public function view_authors_posts()
+  {
+    $poster_id = $this->uri->segment(2);
+
+    if(empty($poster_id))
+    {
+      show_404();
+    }
+
+    //check if author exists
+    $error = Modules::run('users/public_access/author_check', $poster_id);
+    if($error == 'error')
+    {
+      $data['error'] = 'This Author do not exists..!';
+    }
+    $data['posts'] = $this->PostsModel->get_my_post($poster_id);
+    $data['title'] = 'My Autthors Post';
+    $data['module'] = 'posts';
+    $data['view_file'] = 'view_author_posts_view';
+
+    echo Modules::run('templates/default_layout',$data);
+
   }
 }
